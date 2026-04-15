@@ -33,6 +33,7 @@ None
 | `chrony_makestep_limit`     | Limit (in nb) above which chrony won't step the clock anymore, even if needed. | `10`                                   |
 | `chrony_allow`              | List of subnets allowed to access this computer as an NTP server.              | `[]`                                   |
 | `chrony_deny`               | List of subnets NOT allowed to access this computer as an NTP server.          | `[]`                                   |
+| `chrony_maxupdateskew`      | Stop bad estimates upsetting machine clock.                                    | `100.0`                                |
 
 :green_book: Documentation:
 
