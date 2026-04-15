@@ -12,4 +12,5 @@ chrony_makestep_threshold: 1
 chrony_makestep_limit: 10
 chrony_allow: []
 chrony_deny: []
-...
+crony_maxupdateskew: "100.0"
+

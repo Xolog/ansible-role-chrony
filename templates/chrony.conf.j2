@@ -9,6 +9,16 @@ server {{ server }}
 {% endfor %}
 {% endif %}
 
+# Use time sources from DHCP.
+sourcedir /run/chrony-dhcp
+
+# Use NTP sources found in /etc/chrony/sources.d.
+sourcedir /etc/chrony/sources.d
+
+# This directive specify the location of the file containing ID/key pairs for
+# NTP authentication.
+keyfile /etc/chrony/chrony.keys
+
 {%- if chrony_ntp_pools|length > 0 %}
 # List of NTP pools to use
 {% for pool in chrony_ntp_pools %}
@@ -29,6 +39,9 @@ driftfile {{ chrony_config_driftfile }}
 # Step the clock if the adjustement is larger than *threshold* second
 # but only the first *limit* times.
 makestep {{ chrony_makestep_threshold }} {{ chrony_makestep_limit }}
+
+# Stop bad estimates upsetting machine clock.
+maxupdateskew {{ crony_maxupdateskew }}
 
 # Keep UTC date and time for RTC
 rtconutc
